@@ -9,7 +9,7 @@ ApplicationWindow {
     height: 600
     title: qsTr("Lab")
 
-    property string current_app : "Make It Rain"
+    property string current_app : "Colors"
 
     ListModel{
         id : model_app
@@ -18,8 +18,8 @@ ApplicationWindow {
             description : "A stormy night"
         }
         ListElement{
-            title : "App 2"
-            description : "This is the app number 2"
+            title : "Colors"
+            description : "Extract dominant color"
         }
     }
 
@@ -87,6 +87,13 @@ ApplicationWindow {
 
     MakeItRain{
         opacity : root.current_app == "Make It Rain" ? 1.0 : 0.0
+        visible : opacity == 0.0 ? false : true
+
+        anchors.fill:parent
+    }
+
+    Colors{
+        opacity : root.current_app == "Colors" ? 1.0 : 0.0
         visible : opacity == 0.0 ? false : true
 
         anchors.fill:parent

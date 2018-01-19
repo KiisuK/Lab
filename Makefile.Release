@@ -98,6 +98,7 @@ compiler_rcc_clean:
 release/qrc_qml.cpp: qml.qrc \
 		../../../Qt/Qt5.9.0/5.9/mingw53_32/bin/rcc.exe \
 		Bottom_Bar.qml \
+		Colors.qml \
 		MakeItRain.qml \
 		qtquickcontrols2.conf \
 		main.qml
@@ -106,7 +107,8 @@ release/qrc_qml.cpp: qml.qrc \
 release/qrc_img.cpp: img.qrc \
 		../../../Qt/Qt5.9.0/5.9/mingw53_32/bin/rcc.exe \
 		img/left_Arrow.svg \
-		img/right_Arrow.svg
+		img/right_Arrow.svg \
+		img/img.png
 	C:\Qt\Qt5.9.0\5.9\mingw53_32\bin\rcc.exe -name img img.qrc -o release\qrc_img.cpp
 
 compiler_moc_predefs_make_all: release/moc_predefs.h
