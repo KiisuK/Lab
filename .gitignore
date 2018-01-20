@@ -1,2 +1,6 @@
 
 release/
+Makefile
+Makefile.Debug
+Makefile.Release
+Lab.pro.user

@@ -34,7 +34,7 @@ Item{
         height: this.width
 
         property string imgFile : "qrc:/img/img.png"
-        Component.onCompleted:loadImage(canvas.imagefile);
+        Component.onCompleted:loadImage(mycanvas.imagefile);
 
         onPaint: {
             console.log("paint")
