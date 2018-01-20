@@ -3,8 +3,21 @@ import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.3
 import QtQuick.Particles 2.0
 
+import MyFiles.ImageAnalyzer 1.0
+
 Item{
     id : fond
+
+    ImageAnalyzer{ id : imageAnalyzer }
+
+    Image {
+        id : imageToAnalyze
+        source : "qrc:/img/img.png"
+        anchors.centerIn: parent
+        anchors.verticalCenterOffset: -bottom_bar.height/2
+        width : (fond.width < fond.height)?fond.width/2:fond.height/2
+        height : this.width
+    }
 
     MouseArea{
         anchors.fill: parent
@@ -17,36 +30,10 @@ Item{
             //                hidecursor.cursorShape = Qt.ArrowCursor
             //            else
             //                hidecursor.cursorShape = Qt.BlankCursor
-
+            console.log(imageAnalyzer.getPixelsValues(imageToAnalyze.source))
             console.log("clic")
-            mycanvas.loadImage("qrc:/img/img.png")
-           // mycanvas.requestPaint()
         }
 
     }
 
-    Canvas {
-        id: mycanvas
-        anchors.centerIn: parent
-        anchors.verticalCenterOffset: -bottom_bar.height/2
-
-        width: (parent.width<parent.height)?parent.width/2:parent.height/2
-        height: this.width
-
-        property string imgFile : "qrc:/img/img.png"
-        Component.onCompleted:loadImage(mycanvas.imagefile);
-
-        onPaint: {
-            console.log("paint")
-            var ctx = getContext("2d");
-
-
-//            ctx.fillStyle = Qt.rgba(1, 0, 0, 1);
-//            ctx.fillRect(0, 0, width, height);
-        }
-
-        onImageLoaded: {
-            requestPaint()
-        }
-    }
 }
