@@ -12,11 +12,12 @@ Item{
 
     Image {
         id : imageToAnalyze
-        source : "qrc:/img/img.png"
+        source : sourceString
         anchors.centerIn: parent
         anchors.verticalCenterOffset: -bottom_bar.height/2
         width : (fond.width < fond.height)?fond.width/2:fond.height/2
         height : this.width
+        property string sourceString : "img/img.png"
     }
 
     MouseArea{
@@ -30,7 +31,7 @@ Item{
             //                hidecursor.cursorShape = Qt.ArrowCursor
             //            else
             //                hidecursor.cursorShape = Qt.BlankCursor
-            console.log(imageAnalyzer.getPixelsValues(imageToAnalyze.source))
+            console.log(imageAnalyzer.getPixelsValues(imageToAnalyze.sourceString))
             console.log("clic")
         }
 

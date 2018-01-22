@@ -4,19 +4,36 @@
 
 
 #include <QObject>
+#include <QImage>
+#include <QDebug>
 
 class ImageAnalyzer : public QObject{
-   Q_OBJECT
+    Q_OBJECT
 public:
-    explicit ImageAnalyzer (QObject* parent = 0) : QObject(parent) {}
+    explicit ImageAnalyzer (QObject* parent = 0) : QObject(parent)
+    {
+        image = new QImage();
+    }
+
+
 
     Q_INVOKABLE QString getPixelsValues(QString fileName)
     {
-        unsigned char *data = stbi_load((fileName), &width, &height, &numComponents, 3);
+        qDebug()<<"File is : " << fileName;
 
-        qDebug()<< data.length;
-        return filename;
+
+        if(image->load(fileName))
+        {
+
+            return "Oui";
+
+        }
+
+        return "Non";
     }
+
+private :
+    QImage *image;
 
 };
 
