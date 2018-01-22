@@ -31,7 +31,17 @@ Item{
             //                hidecursor.cursorShape = Qt.ArrowCursor
             //            else
             //                hidecursor.cursorShape = Qt.BlankCursor
-            console.log(imageAnalyzer.getPixelsValues(imageToAnalyze.sourceString))
+
+            imageAnalyzer.loadImage(imageToAnalyze.sourceString);
+
+            for(var i=0;i<imageToAnalyze.sourceSize.height;i++)
+            {
+                for(var j=0;j<imageToAnalyze.sourceSize.width;j++)
+                {
+                    imageAnalyzer.getPixelValues(j , i)
+                }
+            }
+
             console.log("clic")
         }
 
