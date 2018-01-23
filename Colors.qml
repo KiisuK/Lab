@@ -8,16 +8,31 @@ import MyFiles.ImageAnalyzer 1.0
 Item{
     id : fond
 
-    ImageAnalyzer{ id : imageAnalyzer }
+    ImageAnalyzer{
+        id : imageAnalyzer
+        onPixelsRGBChanged: {
+            console.log("Image Analysed")
+        }
+
+        onColorsAnalyzed: rect.color = getDominantColor();
+    }
+
+    Rectangle{
+        id : rect
+        anchors.fill : parent
+        color : "grey"
+    }
 
     Image {
         id : imageToAnalyze
         source : sourceString
         anchors.centerIn: parent
         anchors.verticalCenterOffset: -bottom_bar.height/2
-        width : (fond.width < fond.height)?fond.width/2:fond.height/2
+        width : (fond.width < fond.height)?fond.width/2:fond.height/1.5
         height : this.width
-        property string sourceString : "img/img.png"
+        property string sourceString : "img/img.jpg"
+
+        Component.onCompleted: imageAnalyzer.loadImage(imageToAnalyze.sourceString);
     }
 
     MouseArea{
@@ -26,25 +41,10 @@ Item{
         hoverEnabled: true
         focus:true
 
+        property vector2d test
+
         onClicked: {
-            //            if(hidecursor.cursorShape == Qt.BlankCursor)
-            //                hidecursor.cursorShape = Qt.ArrowCursor
-            //            else
-            //                hidecursor.cursorShape = Qt.BlankCursor
-
-            imageAnalyzer.loadImage(imageToAnalyze.sourceString);
-
-            for(var i=0;i<imageToAnalyze.sourceSize.height;i++)
-            {
-                for(var j=0;j<imageToAnalyze.sourceSize.width;j++)
-                {
-                    imageAnalyzer.getPixelValues(j , i)
-                }
-            }
-
-            console.log("clic")
+            console.log(imageAnalyzer.getM_Colors(52));
         }
-
     }
-
 }
