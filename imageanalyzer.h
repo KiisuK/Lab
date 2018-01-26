@@ -48,7 +48,7 @@ public:
             }
         }
 
-        return QColor::fromHsl(tmpIndex,100,50);
+        return QColor::fromHsl(tmpIndex,(m_Saturation.at(tmpIndex)/tmp) ,(m_Luminance.at(tmpIndex)/tmp));
     }
 
     Q_INVOKABLE void loadImage(QString fileName)
@@ -57,6 +57,8 @@ public:
         {
             m_pixelsRGB.clear();
             m_Colors.clear();
+            m_Saturation.clear();
+            m_Luminance.clear();
 
             for(int j = 0 ; j < image->height() ; j+=10)
             {
@@ -71,19 +73,33 @@ public:
             emit pixelsRGBChanged();
 
             for(int i = 0 ; i<360 ; i++)
+            {
                 m_Colors.append(0);
+                m_Luminance.append(0);
+                m_Saturation.append(0);
+            }
 
             for(int i = 0 ; i < m_pixelsRGB.size() ; i+=3)
             {
-                QColor tmpColor = QColor(m_pixelsRGB.at(i),m_pixelsRGB.at(i+1),m_pixelsRGB.at(i+2));
-                m_Colors.replace(tmpColor.hslHue() , m_Colors.at(tmpColor.hslHue()) + 1);
 
+
+                QColor tmpColor = QColor(m_pixelsRGB.at(i),m_pixelsRGB.at(i+1),m_pixelsRGB.at(i+2));
+
+                int t = tmpColor.hslHue();
+                int s = tmpColor.hslSaturation();
+                int l = tmpColor.lightness();
+
+                if(t >= 0 && t < 360)
+                {
+                    m_Colors.replace(t , m_Colors.at(t) + 1);
+                    m_Luminance.replace(t , m_Luminance.at(t) + l);
+                    m_Saturation.replace(t , m_Saturation.at(t) + s);
+                }
 
             }
 
-            qDebug() << m_Colors.size();
 
-                emit colorsAnalyzed();
+            emit colorsAnalyzed();
         }
 
     }
@@ -98,6 +114,8 @@ private :
     bool imageLoaded = false;
 
     QList<int> m_Colors;
+    QList<int> m_Saturation;
+    QList<int> m_Luminance;
 
 };
 

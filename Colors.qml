@@ -30,7 +30,7 @@ Item{
         anchors.verticalCenterOffset: -bottom_bar.height/2
         width : (fond.width < fond.height)?fond.width/2:fond.height/1.5
         height : this.width
-        property string sourceString : "img/img.jpg"
+        property string sourceString : "img/panda.jpeg"
 
         Component.onCompleted: imageAnalyzer.loadImage(imageToAnalyze.sourceString);
     }
