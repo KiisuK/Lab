@@ -5,5 +5,11 @@
         <file>img/img.png</file>
         <file>img/img.jpg</file>
         <file>img/panda.jpeg</file>
+        <file>img/palette.jpg</file>
+        <file>img/mask.png</file>
+        <file>img/bs.jpg</file>
+        <file>img/ff.jpg</file>
+        <file>img/guetta.jpg</file>
+        <file>img/ledZepplin.jpg</file>
     </qresource>
 </RCC>
