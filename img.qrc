@@ -11,5 +11,9 @@
         <file>img/ff.jpg</file>
         <file>img/guetta.jpg</file>
         <file>img/ledZepplin.jpg</file>
+        <file>img/girafe.jpg</file>
+        <file>img/peroquet.jpg</file>
+        <file>img/renard.jpg</file>
+        <file>img/zebre.jpg</file>
     </qresource>
 </RCC>

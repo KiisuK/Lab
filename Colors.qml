@@ -12,7 +12,10 @@ Item{
 
     ImageAnalyzer{
         id : imageAnalyzer
-        onColorsAnalyzed: rect.color = getDominantColor();
+        onColorsAnalyzed: {
+            rect.color = getDominantColor();
+            text.color = getAccentColor(rect.color);
+        }
     }
 
     FileDialog {
@@ -32,25 +35,28 @@ Item{
         id: rect
         anchors.fill: imageToAnalyze
         glowRadius: 100
-        spread: 0.1
+        cornerRadius: 25
+        spread: 0.0
         color: "white"
     }
 
     Image {
         id : imageToAnalyze
         source : sourceString
-        anchors.centerIn: parent
-        width : (fond.width < fond.height)?fond.width/2:fond.height/1.5
+
+        width : (fond.width < fond.height)?fond.width/2:fond.height/2
         height : this.width
+
+        anchors.centerIn: parent
         anchors.verticalCenterOffset: -bottom_bar.height/2
 
+        fillMode: Image.PreserveAspectCrop
+
+        visible : false
         property string sourceString
 
         onSourceStringChanged: imageAnalyzer.loadImage(imageToAnalyze.sourceString);
         Component.onCompleted: sourceString = "img/img.jpg"
-
-        clip : true
-        visible : false
     }
 
     Image{
@@ -66,14 +72,26 @@ Item{
         maskSource: mask
     }
 
+    Text{
+        id : text
+        z : 10
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: bottom_bar.height
+
+        width : parent.width
+        height : 100
+
+        font.pointSize: 44
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+
+        text : "Your Title Here"
+    }
 
     MouseArea{
         anchors.fill: parent
-
         hoverEnabled: true
         focus:true
-
-        property vector2d test
 
         onClicked: {
             fileDialog.visible = true
