@@ -4,5 +4,6 @@
         <file>qtquickcontrols2.conf</file>
         <file>MakeItRain.qml</file>
         <file>Bottom_Bar.qml</file>
+        <file>Colors.qml</file>
     </qresource>
 </RCC>

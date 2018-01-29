@@ -1,2 +1,7 @@
 
 release/
+Makefile
+Makefile.Debug
+Makefile.Release
+Lab.pro.user
+Lab.pro.user.c416e54
