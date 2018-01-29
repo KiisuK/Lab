@@ -51,6 +51,8 @@ public:
         return QColor::fromHsl(tmpIndex,(m_Saturation.at(tmpIndex)/tmp) ,(m_Luminance.at(tmpIndex)/tmp));
     }
 
+    //For accent calculation explanation :  - https://github.com/THEjoezack/ColorMine
+    //                                      - http://colormine.org/delta-e-calculator
     Q_INVOKABLE QColor getAccentColor(QColor dominant) const {
 
         QColor accent =  dominant;
@@ -173,7 +175,6 @@ public:
 
             emit colorsAnalyzed();
         }
-
     }
 
 signals:

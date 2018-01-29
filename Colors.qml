@@ -82,6 +82,8 @@ Item{
         height : 100
 
         font.pointSize: 44
+        font.family: "Dosis"
+
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
 
