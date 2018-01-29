@@ -88,7 +88,7 @@ public:
 
         for(int i = 0; i < m_Colors.size() ; i++)
         {
-            if(m_Colors.at(i) > 10)
+            if(m_Colors.at(i) > m_Colors.size()*0.008)
             {
                 QColor currentColor = QColor::fromHsl(i,dominant.hslSaturation() ,dominant.lightness());
                 int currentR = currentColor.red();
