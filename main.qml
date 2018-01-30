@@ -25,6 +25,10 @@ ApplicationWindow {
             title : "Colors"
             description : "Extract dominant color"
         }
+        ListElement{
+            title : "FireWorks"
+            description : "Play with particle systems"
+        }
     }
 
     Component
@@ -102,6 +106,12 @@ ApplicationWindow {
 
         anchors.fill:parent
     }
+
+    FireWorks{
+        opacity : root.current_app == "FireWorks" ? 1.0 : 0.0
+        visible : opacity == 0.0 ? false : true
+
+        anchors.fill:parent    }
 
     Bottom_Bar{
         id : bottom_bar
