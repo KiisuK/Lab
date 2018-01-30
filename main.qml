@@ -9,13 +9,17 @@ ApplicationWindow {
     height: 600
     title: qsTr("Lab")
 
-    property string current_app : "Colors"
+    property string current_app : "Menu"
 
     ListModel{
         id : model_app
         ListElement{
             title : "Make It Rain"
             description : "A stormy night"
+        }
+        ListElement{
+            title : "Make It Snow"
+            description : "A snowy day"
         }
         ListElement{
             title : "Colors"
@@ -98,7 +102,6 @@ ApplicationWindow {
 
         anchors.fill:parent
     }
-
 
     Bottom_Bar{
         id : bottom_bar
